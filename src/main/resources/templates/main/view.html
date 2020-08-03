@@ -1,0 +1,55 @@
+{% extends "layouts/default" %}
+{% block script %}
+<script type="text/javascript">
+
+    // write
+    $("#write").click (function () {
+        var files = $('input:file')[0].files[0];
+        console.log(files);
+
+        var formData = new FormData();
+        formData.append("files", files);
+
+        // 작성 실행
+        $.ajax ({
+            url: "/file/upload/",
+            type : "POST",
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function (result) {
+                alert (result);
+                location.href = "/";
+            },
+            error: function (result) {
+                alert (result.responseText);
+            }
+        });
+    });
+</script>
+{% endblock %}
+{% block content %}
+<div class="text-center center-block" style="max-width: 400px">
+<form class="form-signin" style="max-width: 400px">
+    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 하양's 블로그</p>
+</form>
+</div>
+
+<!--<div class="container">-->
+<!--    -->
+<!--    <input type="file" id="files" name="files">-->
+<!--    <button id="write">등록</button>-->
+<!--</div>-->
+{% endblock %}
