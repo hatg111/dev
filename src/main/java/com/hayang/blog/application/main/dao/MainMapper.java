@@ -2,11 +2,11 @@ package com.hayang.blog.application.main.dao;
 
 import com.hayang.blog.application.main.domain.BoardFile;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
-import javax.annotation.Resource;
 import java.util.List;
 
-@Resource
+@Repository("mainMapper")
 @Mapper
 public interface MainMapper {
 

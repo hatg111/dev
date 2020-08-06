@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Service
 public interface MainService {
     /**
      * 파일을 다운로드한다.

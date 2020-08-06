@@ -2,6 +2,26 @@
 {% block script %}
 <script type="text/javascript">
 
+    $("#loginSubmit").click(function () {
+        var objParams = {
+            memberId : $("#memberId").val(),
+            password : $("#password").val()
+        }
+        $.post ({
+            url: "/member/login",
+            objParams,
+            success : function (result) {
+                if (result.result === "OK") {
+                    alert("로그인 성공");
+                }
+                else {
+                    alert(result.message);
+                }
+            }
+        })
+
+    })
+
     // write
     $("#write").click (function () {
         var files = $('input:file')[0].files[0];
@@ -31,18 +51,18 @@
 {% block content %}
 <div class="text-center center-block" style="max-width: 400px">
 <form class="form-signin" style="max-width: 400px">
-    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+<!--    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="memberId" class="sr-only">Email address</label>
+    <input id="memberId" type="email" class="form-control" placeholder="Email address" required autofocus>
+    <label for="password" class="sr-only">Password</label>
+    <input id="password" type="password" class="form-control" placeholder="Password" required>
     <div class="checkbox mb-3">
         <label>
             <input type="checkbox" value="remember-me"> Remember me
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button id="loginSubmit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     <p class="mt-5 mb-3 text-muted">&copy; 하양's 블로그</p>
 </form>
 </div>

@@ -16,14 +16,16 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping(value = "/member/login")
-    public Map<String, Boolean> login(LoginParams loginParams) {
-        Map<String, Boolean> response = new HashMap<>();
+    public Map<String, String> login(LoginParams loginParams) {
+        Map<String, String> response = new HashMap<>();
 
         try {
-            response.put("result", loginService.isLogin(loginParams));
+            loginService.login(loginParams);
+            response.put("result", "OK");
         }
         catch (Exception e) {
-
+            response.put("message", e.getMessage());
+            response.put("result", "FAIL");
         }
         return response;
     }
