@@ -3,14 +3,12 @@
 <script type="text/javascript">
 
     $("#loginSubmit").click(function () {
-        var objParams = {
+        let objParams = {
             memberId : $("#memberId").val(),
             password : $("#password").val()
         }
-        $.post ({
-            url: "/member/login",
-            objParams,
-            success : function (result) {
+        $.post ("/member/login", objParams, {
+            function (result) {
                 if (result.result === "OK") {
                     alert("로그인 성공");
                 }
