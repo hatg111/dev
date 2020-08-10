@@ -19,15 +19,16 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping(value = "/member/login")
-    public Map<String, String> login(@RequestParam LoginParams loginParams) {
+    public Map<String, String> login(LoginParams loginParams) {
         Map<String, String> response = new HashMap<>();
-        System.out.println("컨트롤러?");
 
         try {
             loginService.login(loginParams);
+            System.out.println("로그인 수행 완료");
             response.put("result", "OK");
         }
         catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
             response.put("message", e.getMessage());
             response.put("result", "FAIL");
         }

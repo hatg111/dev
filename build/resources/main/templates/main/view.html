@@ -3,22 +3,25 @@
 <script type="text/javascript">
 
     $("#loginSubmit").click(function () {
+        login();
+    });
+
+    function login() {
         let objParams = {
             memberId : $("#memberId").val(),
             password : $("#password").val()
         }
-        $.post ("/member/login", objParams, {
+
+        $.post ("/member/login", objParams,
             function (result) {
-                if (result.result === "OK") {
-                    alert("로그인 성공");
+                if (result.result === 'OK') {
+                    alert(result.message);
                 }
                 else {
                     alert(result.message);
                 }
-            }
-        })
-
-    })
+            });
+    }
 
     // write
     $("#write").click (function () {

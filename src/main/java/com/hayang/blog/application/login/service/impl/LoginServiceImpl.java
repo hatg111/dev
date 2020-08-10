@@ -19,11 +19,11 @@ public class LoginServiceImpl implements LoginService {
             throw new Exception("아이디를 입력하세요. ");
         }
         if (Objects.isNull(loginParams.getPassword())) {
-            throw new Exception("비번을 입력하세요. ");            }
+            throw new Exception("비번을 입력하세요. ");
+        }
         Member member = new Member();
         member.setMemberId(loginParams.getMemberId());
         member.setPassword(loginParams.getPassword());
-
         if (1 != loginMapper.login(member)) {
             throw new Exception("회원정보가 없습니다. ");
         }

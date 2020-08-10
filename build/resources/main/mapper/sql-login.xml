@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.haha.blog.application.application.login.dao.loginMapper">
+<mapper namespace="com.hayang.blog.application.login.dao.LoginMapper">
     <select id="login" resultType="Integer">
         SELECT COUNT(*)
         FROM blog_user
-        WHERE user_id = #{userId}
+        WHERE user_id = #{memberId}
         AND user_pw = #{password}
     </select>
 
