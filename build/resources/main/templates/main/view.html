@@ -2,57 +2,13 @@
 {% block script %}
 <script type="text/javascript">
 
-    $("#loginSubmit").click(function () {
-        login();
-    });
 
-    function login() {
-        let objParams = {
-            memberId : $("#memberId").val(),
-            password : $("#password").val()
-        }
-
-        $.post ("/member/login", objParams,
-            function (result) {
-                if (result.result === 'OK') {
-                    alert(result.message);
-                }
-                else {
-                    alert(result.message);
-                }
-            });
-    }
-
-    // write
-    $("#write").click (function () {
-        var files = $('input:file')[0].files[0];
-        console.log(files);
-
-        var formData = new FormData();
-        formData.append("files", files);
-
-        // 작성 실행
-        $.ajax ({
-            url: "/file/upload/",
-            type : "POST",
-            processData: false,
-            contentType: false,
-            data: formData,
-            success: function (result) {
-                alert (result);
-                location.href = "/";
-            },
-            error: function (result) {
-                alert (result.responseText);
-            }
-        });
-    });
 </script>
 {% endblock %}
 {% block content %}
 <div class="text-center center-block" style="max-width: 400px">
 <form class="form-signin" style="max-width: 400px">
-<!--    <img class="mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+    <img class="mb-4" src="image/test.jpg" alt="" width="400">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
     <label for="memberId" class="sr-only">Email address</label>
     <input id="memberId" type="email" class="form-control" placeholder="Email address" required autofocus>

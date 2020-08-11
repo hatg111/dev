@@ -24,7 +24,7 @@ public class LoginController {
 
         try {
             loginService.login(loginParams);
-            System.out.println("로그인 수행 완료");
+            response.put("message", "로그인 성공하였습니다. ");
             response.put("result", "OK");
         }
         catch (Exception e) {
