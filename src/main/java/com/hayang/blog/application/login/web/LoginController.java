@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping(value = "/member/login/view")
+    @GetMapping(value = "/member/login")
     public ModelAndView getLoginView(ModelAndView mnv) {
         mnv.setViewName("member/login");
         return mnv;
@@ -42,5 +43,11 @@ public class LoginController {
             response.put("result", "FAIL");
         }
         return response;
+    }
+
+    @GetMapping(value = "/member/signUp")
+    public ModelAndView getSignUpView(ModelAndView mnv) {
+        mnv.setViewName("member/signup");
+        return mnv;
     }
 }

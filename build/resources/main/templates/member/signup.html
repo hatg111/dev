@@ -2,54 +2,63 @@
 {% block script %}
 <script type="text/javascript">
 
-    // write
-    $("#write").click (function () {
-        var files = $('input:file')[0].files[0];
-        console.log(files);
 
-        var formData = new FormData();
-        formData.append("files", files);
-
-        // 작성 실행
-        $.ajax ({
-            url: "/file/upload/",
-            type : "POST",
-            processData: false,
-            contentType: false,
-            data: formData,
-            success: function (result) {
-                alert (result);
-                location.href = "/";
-            },
-            error: function (result) {
-                alert (result.responseText);
-            }
-        });
-    });
 </script>
 {% endblock %}
 {% block content %}
-<div class="text-center center-block" style="max-width: 400px">
-    <form class="form-signin" style="max-width: 400px">
-        <img class="mb-4" src="image/test.jpg" alt="" width="400">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="memberId" class="sr-only">Email address</label>
-        <input id="memberId" type="email" class="form-control" placeholder="Email address" required autofocus>
-        <label for="password" class="sr-only">Password</label>
-        <input id="password" type="password" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
+<div class="signup-form">
+    <form action="/examples/actions/confirmation.php" method="post">
+        <h2>회원가입</h2>
+        <p>회원가입을 위해 아래 항목을 작성해주세요. </p>
+        <hr>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="fa fa-user"></span>
+					</span>
+                </div>
+                <input type="text" class="form-control" name="username" placeholder="Username" required="required">
+            </div>
         </div>
-        <button id="loginSubmit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 하양's 블로그</p>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-paper-plane"></i>
+					</span>
+                </div>
+                <input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+					</span>
+                </div>
+                <input type="text" class="form-control" name="password" placeholder="Password" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+						<i class="fa fa-check"></i>
+					</span>
+                </div>
+                <input type="text" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-check-label"><input type="checkbox" required="required"><span style="padding: 1px;"></span>나는 <a href="#">이용약관 및 개인정보처리방침</a>에 동의합니다. </label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-lg">회원가입</button>
+        </div>
     </form>
+    <div class="text-center">이미 가입하셨나요? <a href="/member/login">Login here</a></div>
 </div>
-
-<!--<div class="container">-->
-<!--    -->
-<!--    <input type="file" id="files" name="files">-->
-<!--    <button id="write">등록</button>-->
-<!--</div>-->
 {% endblock %}

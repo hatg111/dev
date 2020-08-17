@@ -11,23 +11,34 @@
             password : $("#password").val()
         }
 
+        if (!objParams.memberId) {
+            alert("ID를 입력하세요. ");
+            return;
+        }
+        if (!objParams.password) {
+            alert("PASSWORD를 입력하세요. ");
+            return;
+        }
+
         $.post ("/member/login", objParams,
             function (result) {
-                if (result.result === "OK") {
-                    alert(result.message);
+                if (result.result == "OK") {
+                    confirm(result.message);
+                    if (confirm) {
+                        location.href= "{{REQUEST_URI}}/";
+                    }
                 }
                 else {
                     alert(result.message);
                 }
             });
     }
-
 </script>
 {% endblock %}
 {% block content %}
 <div class="text-center center-block" style="max-width: 400px">
     <form class="form-signin" style="max-width: 400px">
-        <img class="mb-4" src="image/test.jpg" alt="" width="400">
+        <img class="mb-4" src="{{ REQUEST_URI }}/image/test.jpg" alt="" width="400">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="memberId" class="sr-only">Email address</label>
         <input id="memberId" type="email" class="form-control" placeholder="Email address" required autofocus>
@@ -43,9 +54,4 @@
     </form>
 </div>
 
-<!--<div class="container">-->
-<!--    -->
-<!--    <input type="file" id="files" name="files">-->
-<!--    <button id="write">등록</button>-->
-<!--</div>-->
 {% endblock %}

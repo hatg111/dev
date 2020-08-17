@@ -12,6 +12,8 @@
 
 <body>
 <div class="container">
+	{% include "layouts/inc/nav" %}
+	{% set REQUEST_URI = "http://localhost:8080" %}
 	{% block content %}
 	{% endblock %}
 </div>
