@@ -6,6 +6,17 @@ a a.hover {
     text-decoration: none;
 }
 
+.ml-0 {
+    margin-left: 0px;
+}
+.mr-0,.mx-0{margin-right:0!important}
+
+.ml-auto,.mx-auto{margin-left:auto!important}
+
+.mr-auto,.mx-auto{margin-right:auto!important}
+
+.justify-content-start{-ms-flex-pack:start!important;justify-content:flex-start!important}
+
 /*회원가입 폼 */
 .signup-form {
     width: 400px;
