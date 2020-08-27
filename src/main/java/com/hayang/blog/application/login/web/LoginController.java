@@ -1,14 +1,12 @@
 package com.hayang.blog.application.login.web;
 
 import com.hayang.blog.application.login.domain.LoginParams;
+import com.hayang.blog.application.login.domain.Member;
 import com.hayang.blog.application.login.service.impl.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.awt.event.MouseEvent;
@@ -49,5 +47,15 @@ public class LoginController {
     public ModelAndView getSignUpView(ModelAndView mnv) {
         mnv.setViewName("member/signup");
         return mnv;
+    }
+
+    @PostMapping(value = "/member/signUp")
+    public Map<String, String> signUp(@ModelAttribute Member member) {
+        Map<String, String> result = new HashMap<>();
+        System.out.println(member.getEmail());
+        System.out.println(member.getPassword());
+        System.out.println(member.getUserName());
+
+        return result;
     }
 }
