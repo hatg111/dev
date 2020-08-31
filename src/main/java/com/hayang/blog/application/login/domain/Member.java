@@ -3,7 +3,7 @@ package com.hayang.blog.application.login.domain;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 
-@Alias("Member")
+@Alias("member")
 @Data
 public class Member {
     private String email;

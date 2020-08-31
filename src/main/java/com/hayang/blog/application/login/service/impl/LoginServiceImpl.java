@@ -15,18 +15,31 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void login(LoginParams loginParams) throws Exception {
-        if (Objects.isNull(loginParams.getMemberId())) {
-            throw new Exception("아이디를 입력하세요. ");
-        }
-        if (Objects.isNull(loginParams.getPassword())) {
-            throw new Exception("비번을 입력하세요. ");
-        }
+        nullCheckUtill(loginParams.getMemberId(), "아이디를 입력하세요. ");
+        nullCheckUtill(loginParams.getPassword(), "비번을 입력하세요. ");
+
         Member member = new Member();
         member.setMemberId(loginParams.getMemberId());
         member.setPassword(loginParams.getPassword());
         
         if (1 != loginMapper.login(member)) {
             throw new Exception("회원정보가 없습니다. ");
+        }
+    }
+
+    @Override
+    public void signUp(Member member) throws Exception {
+        nullCheckUtill(member.getEmail(), "email주소가 없습니다. ");
+        nullCheckUtill(member.getPassword(), "PASSWORD가 없습니다. ");
+        nullCheckUtill(member.getUserName(), "이름이 없습니다. ");
+        System.out.println(member.getEmail());
+
+        loginMapper.signUp(member);
+    }
+
+    private void nullCheckUtill(Object object, String message) throws Exception {
+        if (Objects.isNull(object)) {
+            throw new Exception(message);
         }
     }
 }

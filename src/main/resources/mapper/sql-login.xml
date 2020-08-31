@@ -10,4 +10,18 @@
         AND user_pw = #{password}
     </select>
 
+    <insert id="signUp">
+        INSERT INTO blog_user
+        (user_id,
+        user_nm,
+        user_pw,
+        phone)
+        VALUES
+        (#{email},
+        #{userName},
+        #{password},
+        ''
+        )
+    </insert>
+
 </mapper>

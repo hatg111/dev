@@ -49,12 +49,16 @@ public class LoginController {
         return mnv;
     }
 
+    @ResponseBody
     @PostMapping(value = "/member/signUp")
-    public Map<String, String> signUp(@ModelAttribute Member member) {
+    public Map<String, String> signUp(Member member) {
         Map<String, String> result = new HashMap<>();
-        System.out.println(member.getEmail());
-        System.out.println(member.getPassword());
-        System.out.println(member.getUserName());
+        try {
+            loginService.signUp(member);
+            result.put("message", "회원가입 성공");
+        } catch (Exception e) {
+            result.put("message", e.getMessage());
+        }
 
         return result;
     }

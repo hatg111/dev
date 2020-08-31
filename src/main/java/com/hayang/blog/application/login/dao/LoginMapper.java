@@ -5,8 +5,10 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 
-@Repository("loginMapper")
+@Repository("LoginMapper")
 @Mapper
 public interface LoginMapper {
-    public Integer login(Member member);
+    public Integer login(Member member) throws Exception;
+
+    public void signUp(Member member) throws Exception;
 }

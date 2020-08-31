@@ -15,7 +15,7 @@
             function (result) {
                 if (result.status == 'OK') {
                     alert(result.message);
-                    location.href= "{{REQUEST_URI}}/";
+                    location.href= "/";
                 } else {
                     alert(result.message);
                 }
@@ -27,7 +27,6 @@
 {% endblock %}
 {% block content %}
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
         <h2>회원가입</h2>
         <p>회원가입을 위해 아래 항목을 작성해주세요. </p>
         <hr>
@@ -78,7 +77,6 @@
         <div class="form-group">
             <button id="signUp" type="submit" class="btn btn-primary btn-lg">회원가입</button>
         </div>
-    </form>
     <div class="text-center">이미 가입하셨나요? <a href="/member/login">Login here</a></div>
 </div>
 {% endblock %}
