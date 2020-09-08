@@ -4,10 +4,33 @@
 
     $("#signUp").click(function() {
         var objParams = {
-            userName : $('input[name="userName"]').val(),
-            email    : $('input[name="email"]').val(),
-            password : $('input[name="password"]').val()
+            userName  : $('input[name="userName"]').val(),
+            email     : $('input[name="email"]').val(),
+            password  : $('input[name="password"]').val(),
+            password2 : $('input[name="confirm_password"]').val()
         }
+
+        if (objParams.userName == null) {
+            alert("userName을 입력하세요. ");
+            return;
+        }
+        if (objParams.email == null) {
+            alert("email을 입력하세요. ");
+            return;
+        }
+        if (objParams.password == null) {
+            alert("password을 입력하세요. ");
+            return;
+        }
+        if (objParams.password != objParams.password2) {
+            alert("비밀번호가 일치하지 않습니다. ");
+            return;
+        }
+        if ($('input[name="checkConfirm"]').val() != 'on') {
+            alert("약관 및 개인정보 처리방침에 동의해주세요.");
+            return;
+        }
+
 
         $.post(
             "/member/signUp",
@@ -22,10 +45,6 @@
             }
         )
     })
-
-
-    console.log("이건 머지 테스트");
-    console.log("ddddd");
 
 </script>
 {% endblock %}
@@ -76,7 +95,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-check-label"><input type="checkbox" required="required"><span style="padding: 1px;"></span>나는 <a href="#">이용약관 및 개인정보처리방침</a>에 동의합니다. </label>
+            <label class="form-check-label"><input type="checkbox" name="checkConfirm" required="required"><span style="padding: 1px;"></span>나는 <a href="#">이용약관 및 개인정보처리방침</a>에 동의합니다. </label>
         </div>
         <div class="form-group">
             <button id="signUp" type="submit" class="btn btn-primary btn-lg">회원가입</button>
