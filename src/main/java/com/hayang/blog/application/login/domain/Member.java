@@ -10,6 +10,7 @@ public class Member {
     private String userName;
     private String memberId;
     private String password;
+    private String encodedPassword;
     private String phoneNumber;
 
 }
