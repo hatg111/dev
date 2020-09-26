@@ -21,8 +21,9 @@ public class LoginServiceImpl implements LoginService {
         nullCheckUtill(loginParams.getPassword(), "비번을 입력하세요. ");
 
         Member member = new Member();
+        String password = createHash(loginParams.getPassword());
         member.setMemberId(loginParams.getMemberId());
-        member.setPassword(loginParams.getPassword());
+        member.setPassword(password);
         
         if (1 != loginMapper.login(member)) {
             throw new Exception("회원정보가 없습니다. ");
@@ -51,7 +52,7 @@ public class LoginServiceImpl implements LoginService {
         String hashString = "";
         try {
             // MD2, MD4, MD5, SHA-1, SHA-256, SHA-512
-            MessageDigest sh = MessageDigest.getInstance("SHA-512");
+            MessageDigest sh = MessageDigest.getInstance("MD5");
             sh.update(str.getBytes());
             byte byteData[] = sh.digest();
             StringBuffer sb = new StringBuffer();
