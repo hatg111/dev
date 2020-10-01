@@ -22,9 +22,8 @@
 
         $.post ("/member/login", objParams,
             function (result) {
-                if (result.result == "OK") {
-                    confirm(result.message);
-                    if (confirm) {
+                if (result.result === "OK") {
+                    if (confirm(result.message)) {
                         location.href= "{{REQUEST_URI}}/";
                     }
                 }

@@ -26,6 +26,11 @@ public class MainController {
         return mnv;
     }
 
+    @GetMapping(value = "/board/write")
+    public ModelAndView getBoardWrite(ModelAndView mnv) {
+        mnv.setViewName("board/write");
+        return mnv;
+    }
 
 
     //@GetMapping(value = "/file/download")
