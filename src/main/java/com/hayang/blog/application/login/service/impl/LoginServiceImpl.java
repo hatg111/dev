@@ -25,7 +25,7 @@ public class LoginServiceImpl implements LoginService {
         member.setMemberId(loginParams.getMemberId());
         member.setPassword(password);
         
-        if (1 != loginMapper.login(member)) {
+        if (!(loginMapper.login(member) == 1)) {
             throw new Exception("회원정보가 없습니다. ");
         }
     }

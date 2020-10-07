@@ -4,12 +4,10 @@ import com.hayang.blog.application.login.domain.LoginParams;
 import com.hayang.blog.application.login.domain.Member;
 import com.hayang.blog.application.login.service.impl.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 
